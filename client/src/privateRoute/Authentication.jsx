@@ -5,7 +5,7 @@ const Authentication = ({children}) => {
     const local = localStorage.getItem('token')
 
   return (
-    local ? children : <Navigate to='/auth'/>
+    !local ? children : <Navigate to='/auth'/>
   )
 }
 
