@@ -3,9 +3,7 @@ import { MdEdit, MdDelete } from 'react-icons/md';
 
 
 const Card = () => {
-  const handleClick = () => {
-    console.log("clicked");
-  }
+
   const [done, setDone] = useState(false);
 
   return (

@@ -1,18 +1,27 @@
 const express = require('express')
+const bodyParser = require('body-parser');
+const connectToMongo = require('./db')
+var cors = require('cors')  // cors policy handle
 const port = process.env.PORT || 8000;
+const app = express()
+app.use(cors())
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 require('dotenv').config();
 
-const controller = require('./Routes/test')
+const authentication = require('./Routes/auth')
 
 
-const app = express()
 
 app.get('/',(req,res)=>{
     res.send("backend is working")
 })
 
-app.use('/test',controller)
+app.use('/api/auth',authentication)
 
-app.listen(port, () => {
-    console.log("you are listening to port: " + `http://localhost:${port}/`);
+
+connectToMongo().then(() => {
+    app.listen(port, () => {
+        console.log(`http://localhost:${port}/`)
+    })
 })
