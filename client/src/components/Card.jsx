@@ -31,12 +31,12 @@ const Card = () => {
           {/* <button > */}
           <span className='flex gap-x-3'>
             <MdDelete style={{ fontSize: "20px", cursor: "pointer" }} />
-            <MdEdit style={{ fontSize: "20px", cursor: "pointer" }} />
-          </span>
-          {/* </button> */}
+            <MdEdit style={{ fontSize: "20px", cursor: "pointer" }} data-toggle="modal" data-target="#editModal"/>
         </span>
-      </div>
+        {/* </button> */}
+      </span>
     </div>
+    </div >
   )
 }
 
