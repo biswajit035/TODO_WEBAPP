@@ -11,7 +11,7 @@ export const STATUSES = Object.freeze({
 
 export const login = createAsyncThunk('user/login', async (cred) => {
     // const result = await fetch(`${process.env.REACT_APP_HOST}/api/auth/login`, {
-    const result = await fetch(`http://localhost:8000/api/auth/login`, {
+    const result = await fetch(`${process.env.REACT_APP_HOST}/api/auth/login`, {
         method: "POST",
         headers: {
             'Content-Type': 'application/json'
@@ -36,8 +36,7 @@ export const login = createAsyncThunk('user/login', async (cred) => {
 
 export const signup = createAsyncThunk('user/signup', async (cred) => {
     localStorage.clear();
-    // const result = await fetch(`${process.env.REACT_APP_HOST}/api/auth/login`, {
-    const result = await fetch(`http://localhost:8000/api/auth/signup`, {
+    const result = await fetch(`${process.env.REACT_APP_HOST}/api/auth/signup`, {
         method: "POST",
         headers: {
             'Content-Type': 'application/json'
