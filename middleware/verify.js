@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken')
 const dotenv = require('dotenv')
 const JWT_SECRET_KEY = process.env.JWT_SECRET_KEY
 
-
+// for verifying user token
 function verifyToken(req,res,next){
     const token = req.headers.token;
     if(!token) return res.status(401).json({"msg":"you are not authenticated"});
@@ -12,6 +12,8 @@ function verifyToken(req,res,next){
         next()
     })
 }
+
+// for verifying user 
 function verifyUser(req,res,next){
     verifyToken(req,res,()=>{
         next();

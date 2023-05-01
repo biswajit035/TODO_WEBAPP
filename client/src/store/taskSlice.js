@@ -25,7 +25,7 @@ export const add = createAsyncThunk('task/add', async (data) => {
     });
 
     const json = await result.json();
-    if (result.status == 201) {
+    if (result.status === 201) {
         toast.success("Task added")
         return json
     }
@@ -34,7 +34,7 @@ export const add = createAsyncThunk('task/add', async (data) => {
         return json
     }
 })
-export const edit = createAsyncThunk('task/add', async ({data,id}) => {
+export const edit = createAsyncThunk('task/edit', async ({data,id}) => {
     // console.log(id);
     const result = await fetch(`${process.env.REACT_APP_HOST}/api/task/edit`, {
         method: "PUT",
@@ -46,8 +46,9 @@ export const edit = createAsyncThunk('task/add', async ({data,id}) => {
     });
 
     const json = await result.json();
-    if (result.status == 201) {
-        toast.success("Task added")
+    console.log(json);
+
+    if (result.status === 201) {
         return json
     }
     else {
@@ -55,6 +56,7 @@ export const edit = createAsyncThunk('task/add', async ({data,id}) => {
         return json
     }
 })
+
 export const remove = createAsyncThunk('task/remove', async (id) => {
     const result = await fetch(`${process.env.REACT_APP_HOST}/api/task/remove`, {
         method: "DELETE",
@@ -66,7 +68,7 @@ export const remove = createAsyncThunk('task/remove', async (id) => {
     });
 
     const json = await result.json();
-    if (result.status == 201) {
+    if (result.status === 201) {
         toast.success("Task DELETED")
         return json
     }
@@ -77,7 +79,7 @@ export const remove = createAsyncThunk('task/remove', async (id) => {
 })
 
 export const getTask = createAsyncThunk('task/getTask', async () => {
-    const result = await fetch(`${process.env.REACT_APP_HOST}/api/task/fetch`, {
+    const result = await fetch(`http://localhost:8000/api/task/fetch`, {
         method: "GET",
         headers: {
             'Content-Type': 'application/json',
@@ -86,8 +88,9 @@ export const getTask = createAsyncThunk('task/getTask', async () => {
     });
     
     const json = await result.json();
-    if (result.status == 201) {
-        return json.task
+    console.log(json);
+    if (result.status === 201) {
+        return json
     }
     else {
         toast.warn(json.msg)
@@ -101,20 +104,28 @@ export const taskSlice = createSlice({
     name: 'task',
     initialState: {
         data: [],
-        status: STATUSES.IDLE
+        status: STATUSES.IDLE,
+        UStatus: STATUSES.IDLE
     },
     reducers: {},
     extraReducers: (builder) => {
         builder
+            .addCase( edit.pending, (state, action) => {
+                state.UStatus = STATUSES.LOADING
+            })
             .addMatcher(isAnyOf(add.pending, getTask.pending), (state, action) => {
                 state.status = STATUSES.LOADING
             })
-            .addMatcher(isAnyOf(add.fulfilled, remove.fulfilled, getTask.fulfilled), (state, action) => {
+            .addMatcher(isAnyOf(add.fulfilled, remove.fulfilled, getTask.fulfilled, edit.fulfilled), (state, action) => {
                 state.data = action.payload
                 state.status = STATUSES.IDLE
+                state.UStatus = STATUSES.IDLE
+
             })
-            .addMatcher(isAnyOf(add.rejected, remove.rejected, getTask.rejected), (state, action) => {
+            .addMatcher(isAnyOf(add.rejected, remove.rejected, getTask.rejected, edit.fulfilled), (state, action) => {
                 state.status = STATUSES.ERROR
+                state.UStatus = STATUSES.ERROR
+
             })
     }
 

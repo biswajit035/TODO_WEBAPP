@@ -11,9 +11,9 @@ const Topbar = () => {
     }
     return (
         <div className='flex justify-between'>
-            <span className='text-xl md:text-2xl font-bold'>
+            <p className='text-xl font-bold md:text-2xl '>
                 Task<span className='text-gray-400'>Manager</span>
-            </span>
+            </p>
 
             {/* profile section */}
             <div className='flex items-center gap-1'>

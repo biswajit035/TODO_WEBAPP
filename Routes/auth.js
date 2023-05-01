@@ -3,8 +3,7 @@ const router = require('express').Router()
 var bodyParser = require('body-parser')
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
-const auth = require('../controllers/auth')
-
+const auth = require('../controllers/authentication')
 
 router.route("/login").post(urlencodedParser,auth.login)
 router.route("/signup").post(urlencodedParser,auth.signup)

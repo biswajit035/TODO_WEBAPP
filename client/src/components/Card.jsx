@@ -1,16 +1,16 @@
-import React, { useState,useRef } from 'react'
+import React, { useState, useRef } from 'react'
 import { MdEdit, MdDelete } from 'react-icons/md';
 import Switch from "react-switch";
 import { useDispatch, useSelector } from 'react-redux'
-import {  edit, remove } from '../store/taskSlice';
+import { STATUSES, edit, remove } from '../store/taskSlice';
 import Modal from 'react-bootstrap/Modal';
-import { add } from '../store/taskSlice';
+import { ThreeDots } from 'react-loader-spinner';
 
 
 const Card = ({ name, isDone, date, id, pos }) => {
   const buttonRef = useRef(null);
   const dispatch = useDispatch()
-  const { data, status } = useSelector((state) => state.task)
+  const { data, UStatus } = useSelector((state) => state.task)
   const [show, setShow] = useState(false);
   const [done, setDone] = useState(isDone)
   const [eForm, setEForm] = useState({
@@ -18,7 +18,7 @@ const Card = ({ name, isDone, date, id, pos }) => {
     date: ""
   })
 
-// edit modal function
+  // edit modal function
   const handleDelete = (id) => {
     dispatch(remove(id));
   }
@@ -41,22 +41,23 @@ const Card = ({ name, isDone, date, id, pos }) => {
   const handleToggle = (id) => {
     setDone(!done)
   }
-  const handleChk=async(id)=>{
-    const data = {
-      isDone: !done
-    }
+  const handleChk = async (id) => {
+    const data = { isDone: !done }
+    // api call
     dispatch(edit({ data, id }))
+    // change the status
     setDone(!done);
   }
-  const handleEditModal =async(id)=>{
+  const handleEditModal = async (id) => {
     const data = {
       name: eForm.name,
       date: eForm.date,
       isDone: done
     }
-    dispatch(edit({data,id}))
+    // api call
+    await dispatch(edit({ data, id }))
     // dispatch(getTask())
-    // handleClose();
+    handleClose();
   }
 
   // format the date
@@ -65,7 +66,8 @@ const Card = ({ name, isDone, date, id, pos }) => {
   const dateString = datem.toLocaleDateString('en-US', options);
 
   return (
-    <div className='flex items-baseline gap-x-7 md:border-2 md:border-gray-100 md:h-fit md:w-60 p-3 md:shadow-lg md:shadow-gray-200'>
+    // card body
+    <div className='flex items-baseline gap-x-7 md:border-2 md:border-gray-100 md:h-fit md:w-65 p-3 md:shadow-lg md:shadow-gray-200 border-b-2 last:border-0 hover:shadow-gray-500 hover:scale-105 duration-200 cursor-pointer'>
 
       {/* edit modal */}
       <Modal show={show} onHide={handleClose}>
@@ -74,12 +76,17 @@ const Card = ({ name, isDone, date, id, pos }) => {
         </Modal.Header>
         <Modal.Body>
           <form className='flex flex-col gap-y-5 text-xl' >
+            {/* task name */}
             <label className='flex flex-col'>Task Name:
               <input type="text" name="name" id="name" className='bg-gray-200 rounded-md focus:outline-none  px-2 py-2 ' placeholder='Enter Task' value={eForm.name} onChange={handleChange} required />
             </label>
+
+            {/* task date */}
             <label htmlFor="date" className='flex flex-col'>Task Date:
               <input type="date" name="date" id="date" className='bg-gray-200 rounded-md focus:outline-none  px-1 py-2' value={eForm.date} onChange={handleChange} required />
             </label>
+
+            {/* task status */}
             <span className='flex text-sm gap-x-2 items-center'>
               Uncompleted
               <Switch onChange={handleToggle} checked={done} onColor="#86d3ff"
@@ -96,46 +103,66 @@ const Card = ({ name, isDone, date, id, pos }) => {
               Completed
             </span>
           </form>
-
         </Modal.Body>
         <Modal.Footer>
           <button type="button" className='border-2 border-red-400 text-red-600 hover:bg-red-400 hover:text-white py-2 px-4 rounded-lg' onClick={handleClose}>Close</button>
-          <button type="button" className='border-2 border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white py-2 px-2 rounded-lg' onClick={()=>{handleEditModal(id)}}>Edit Task</button>
+          <button type="button" className='border-2 border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white py-2 px-2 rounded-lg' onClick={() => { handleEditModal(id) }}>
+            {
+              UStatus == STATUSES.LOADING ?
+                <ThreeDots
+                  height="32"
+                  width="90"
+                  radius="9"
+                  color="WHITE"
+                  ariaLabel="three-dots-loading"
+                  wrapperStyle={{}}
+                  wrapperClassName=""
+                  visible={true}
+                />
+                :
+                "Edit Task"
+            }
+            </button>
         </Modal.Footer>
       </Modal>
       {/* <!--edit Modal end--> */}
 
 
       {/* Card holder */}
-      <input className='cursor-pointer' checked={done} type="checkbox" name="" id="" onClick={() => {handleChk(id)}} />
+      <input className='cursor-pointer' checked={done} type="checkbox" name="" id="" onClick={() => { handleChk(id) }} />
+
       {/* Card  */}
       <div className="flex flex-col">
-        {/* first row */}
+
+
+        {/*card-> first row */}
         <span className='font-semibold text-xl' >
           {
             done ?
-              <s>
-                {name}
-              </s>
+              <s>{name}</s>
               :
               <>{name}</>
-
           }
         </span>
-        {/* second row */}
-        <span className='flex justify-between'>
+
+        {/*card-> second row */}
+        <span className='flex justify-between gap-x-[15vw] md:gap-x-[8vw]'>
+          {/* date */}
           <span>{dateString}</span>
-          {/* <button > */}
-          <span className='flex gap-x-3'>
-            {/* dleete task */}
-            <MdDelete style={{ fontSize: "20px", cursor: "pointer" }} onClick={() => { handleDelete(id) }} />
+
+          {/* delte and edit button */}
+          <span className='flex gap-x-[3vw] md:gap-x-[1vw]'>
+
+            {/* delete task */}
+            <span className='hover:scale-125 duration-200 '>
+              <MdDelete style={{ fontSize: "20px", cursor: "pointer" }} onClick={() => { handleDelete(id) }} />
+            </span>
 
             {/* edit task */}
-            <MdEdit style={{ fontSize: "20px", cursor: "pointer" }}
-              onClick={() => { handleEdit(pos) }}
-            />
+            <span className='hover:scale-125 duration-200 '>
+              <MdEdit style={{ fontSize: "20px", cursor: "pointer" }} onClick={() => { handleEdit(pos) }} />
+            </span>
           </span>
-          {/* </button> */}
         </span>
       </div>
     </div >
