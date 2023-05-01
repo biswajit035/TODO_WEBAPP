@@ -88,16 +88,12 @@ Start the server
 
 To run this project, you will need to add the following environment variables to your .env file
 - **at backend**
-<br>
-`DATABASE_ID`= "***************"
-<br>
-`DATABASE_PASS`= "***************"
-<br>
-`JWT_SECRET_KEY`= "***************"
+  - `DATABASE_ID`= "***************"
+  - `DATABASE_PASS`= "***************"
+  - `JWT_SECRET_KEY`= "***************"
 
 - **at frontend**
-<br>
-`REACT_APP_HOST` = "************"
+  - `REACT_APP_HOST` = "************"
 
 
 
