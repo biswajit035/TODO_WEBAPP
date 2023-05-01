@@ -18,8 +18,10 @@ Stay on top of your tasks with our user-friendly Todo app, designed to keep you 
 
 ## Tech Stack 💻
 
-**Frontend:** ReactJS, Redux Toolkit, Tailwind CSS emoji
+**Frontend:** ReactJS, Redux Toolkit, Tailwind CSS
+<br>
 **Backend:** Node js, Express js
+<br>
 **Database** Mongodb atlas
 
 ***
@@ -86,11 +88,15 @@ Start the server
 
 To run this project, you will need to add the following environment variables to your .env file
 - **at backend**
+<br>
 `DATABASE_ID`= "***************"
+<br>
 `DATABASE_PASS`= "***************"
+<br>
 `JWT_SECRET_KEY`= "***************"
 
 - **at frontend**
+<br>
 `REACT_APP_HOST` = "************"
 
 
