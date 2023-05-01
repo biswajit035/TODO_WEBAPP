@@ -1,25 +1,31 @@
 
-# Todo App
+# Todo App 📑
 
 Stay on top of your tasks with our user-friendly Todo app, designed to keep you organized and hassle-free.
 
 
+## Preview 🗞️
 
-## Tech Stack
-
-**Client:** React, Redux, TailwindCSS
-
-**Server:** Node, Express
+![App Screenshot](./demo/login.png)
+![App Screenshot](./demo/dash.png)
 
 
-## Screenshots
+## Live Demo 🧰
 
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+[Link](https://t0d0web.vercel.app/)
 
+***
 
+## Tech Stack 💻
+
+**Frontend:** ReactJS, Redux Toolkit, Tailwind CSS emoji
+**Backend:** Node js, Express js
+**Database** Mongodb atlas
+
+***
 # Run Locally
 
-## frontend 
+## frontend 📗
 
 Clone the project
 
@@ -47,7 +53,7 @@ Start the server
 ```
 
 
-## backend 
+## backend  📘
 
 Clone the project
 
@@ -73,265 +79,31 @@ Start the server
   npm run dev
 ```
 
+****
 
 
-
-# Todo App
-
-Stay on top of your tasks with our user-friendly Todo app, designed to keep you organized and hassle-free.
-
-
-
-## Tech Stack
-
-**Client:** React, Redux, TailwindCSS
-
-**Server:** Node, Express
-
-
-## Screenshots
-
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
-
-
-# Run Locally
-
-## frontend 
-
-Clone the project
-
-```bash
-  git clone https://github.com/biswajit035/TODO_WEBAPP.git
-```
-
-Go to the project directory
-
-```bash
-  cd TODO_WEBAPP
-  cd client
-```
-
-Install dependencies
-
-```bash
-  npm install
-```
-
-Start the server
-
-```bash
-  npm run start
-```
-
-
-## backend 
-
-Clone the project
-
-```bash
-  git clone https://github.com/biswajit035/TODO_WEBAPP.git
-```
-
-Go to the project directory
-
-```bash
-  cd TODO_WEBAPP
-```
-
-Install dependencies
-
-```bash
-  npm install
-```
-
-Start the server
-
-```bash
-  npm run dev
-```
-
-
-
-
-
-
-
-## Deployment
-
-To deploy this project run
-
-```bash
-  npm run deploy
-```
-
-
-# Todo App
-
-Stay on top of your tasks with our user-friendly Todo app, designed to keep you organized and hassle-free.
-
-
-
-## Tech Stack
-
-**Client:** React, Redux, TailwindCSS
-
-**Server:** Node, Express
-
-
-## Screenshots
-
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
-
-
-# Run Locally
-
-## frontend 
-
-Clone the project
-
-```bash
-  git clone https://github.com/biswajit035/TODO_WEBAPP.git
-```
-
-Go to the project directory
-
-```bash
-  cd TODO_WEBAPP
-  cd client
-```
-
-Install dependencies
-
-```bash
-  npm install
-```
-
-Start the server
-
-```bash
-  npm run start
-```
-
-
-## backend 
-
-Clone the project
-
-```bash
-  git clone https://github.com/biswajit035/TODO_WEBAPP.git
-```
-
-Go to the project directory
-
-```bash
-  cd TODO_WEBAPP
-```
-
-Install dependencies
-
-```bash
-  npm install
-```
-
-Start the server
-
-```bash
-  npm run dev
-```
-
-
-
-
-# Todo App
-
-Stay on top of your tasks with our user-friendly Todo app, designed to keep you organized and hassle-free.
-
-
-
-## Tech Stack
-
-**Client:** React, Redux, TailwindCSS
-
-**Server:** Node, Express
-
-
-## Screenshots
-
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
-
-
-# Run Locally
-
-## frontend 
-
-Clone the project
-
-```bash
-  git clone https://github.com/biswajit035/TODO_WEBAPP.git
-```
-
-Go to the project directory
-
-```bash
-  cd TODO_WEBAPP
-  cd client
-```
-
-Install dependencies
-
-```bash
-  npm install
-```
-
-Start the server
-
-```bash
-  npm run start
-```
-
-
-## backend 
-
-Clone the project
-
-```bash
-  git clone https://github.com/biswajit035/TODO_WEBAPP.git
-```
-
-Go to the project directory
-
-```bash
-  cd TODO_WEBAPP
-```
-
-Install dependencies
-
-```bash
-  npm install
-```
-
-Start the server
-
-```bash
-  npm run dev
-```
-
-## Environment Variables
+## Environment Variables 📚
 
 To run this project, you will need to add the following environment variables to your .env file
-- at backend 
-`backend_secret`= "***************"
-- at frontend
+- **at backend**
+`DATABASE_ID`= "***************"
+`DATABASE_PASS`= "***************"
+`JWT_SECRET_KEY`= "***************"
+
+- **at frontend**
 `REACT_APP_HOST` = "************"
 
 
 
 
-## Features
+## Features 🔖
 
 - Login/Signup
 - Add Task
+- Show Task
 - Check/Uncheck Task
 - Edit Task
 - Delete Task
+
+
 
