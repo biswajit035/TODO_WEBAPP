@@ -15,6 +15,19 @@ const UersSchema = new Schema({
     password: {
         type: String,
         required: true
-    }
+    },
+    task:[
+        {
+            name:{
+                type: String
+            },
+            date:{
+                type: String
+            },
+            isDone:{
+                type: Boolean
+            }
+        }
+    ]
 })
 module.exports = mongoose.model('users', UersSchema);

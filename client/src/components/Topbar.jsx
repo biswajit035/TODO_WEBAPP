@@ -20,7 +20,7 @@ const Topbar = () => {
                 <FaUser />
                 Biswajit
                 <TbLogout
-                    style={{ fontSize: "20px", fontWeight: "bold", marginLeft: "10px" }}
+                    style={{ fontSize: "20px", fontWeight: "bold", marginLeft: "10px", cursor:"pointer" }}
                     onClick={handleLogout} />
             </div>
         </div>

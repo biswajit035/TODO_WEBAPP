@@ -35,9 +35,9 @@ const Login = () => {
         {/* email */}
         <label
           htmlFor="email"
-          className="text-xl after:content-['*'] after:ml-0.5 after:text-red-500">Email:</label>
+          className="text-lg after:content-['*'] after:ml-0.5 after:text-red-500">Email:</label>
         <input
-          className="border-2 h-10 rounded-3xl p-5 mb-5 focus:outline-none focus:border-blue-500 focus:invalid:border-red-500 "
+          className="border-2 h-10 rounded-3xl p-3 mb-3 focus:outline-none focus:border-blue-500 focus:invalid:border-red-500 "
           autoComplete="off"
           type="email"
           id='email'
@@ -48,7 +48,7 @@ const Login = () => {
         {/* password */}
         <label htmlFor="password" className="text-xl after:content-['*'] after:ml-0.5 after:text-red-500">Password:</label>
         <input
-          className='border-2 h-10 rounded-3xl p-5 mb-5 focus:outline-none focus:border-blue-500'
+          className='border-2 h-10 rounded-3xl p-3 mb-5 focus:outline-none focus:border-blue-500'
           type="password"
           id='password'
           name='password'

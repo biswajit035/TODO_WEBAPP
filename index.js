@@ -10,6 +10,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 require('dotenv').config();
 
 const authentication = require('./Routes/auth')
+const Task = require('./Routes/task')
 
 
 
@@ -18,6 +19,7 @@ app.get('/',(req,res)=>{
 })
 
 app.use('/api/auth',authentication)
+app.use('/api/task',Task)
 
 
 connectToMongo().then(() => {

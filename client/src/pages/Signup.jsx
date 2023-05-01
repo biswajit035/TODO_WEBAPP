@@ -32,14 +32,15 @@ const Signup = () => {
       {/* form */}
       <form action="" className='text-2xl flex flex-col ' onSubmit={handleSubmit}>
         {/* Full Name */}
-        <label htmlFor="email" className="text-xl after:content-['*'] after:ml-0.5 after:text-red-500">Full Name:</label>
-        <input className='border-2 h-10 rounded-3xl p-5 mb-5 focus:outline-none focus:border-blue-500  ' type="text" id='name' name='name' value={form.name} placeholder='Enter your name' required onChange={(e) => { handleChange(e) }} />
+        <label htmlFor="email"
+        className="text-lg after:content-['*'] after:ml-0.5 after:text-red-500">Full Name:</label>
+        <input className='border-2 h-10 rounded-3xl p-3 mb-3 focus:outline-none focus:border-blue-500  ' type="text" id='name' name='name' value={form.name} placeholder='Enter your name' required onChange={(e) => { handleChange(e) }} />
         {/* Email */}
-        <label htmlFor="email" className="text-xl after:content-['*'] after:ml-0.5 after:text-red-500">Email:</label>
-        <input className='border-2 h-10 rounded-3xl p-5 mb-5 focus:outline-none focus:border-blue-500 focus:invalid:border-red-500 ' autoComplete="off" type="email" id='email' name='email' value={form.email} placeholder='Enter your email' required onChange={(e) => { handleChange(e) }} />
+        <label htmlFor="email" className="text-lg after:content-['*'] after:ml-0.5 after:text-red-500">Email:</label>
+        <input className='border-2 h-10 rounded-3xl p-3 mb-3 focus:outline-none focus:border-blue-500 focus:invalid:border-red-500 ' autoComplete="off" type="email" id='email' name='email' value={form.email} placeholder='Enter your email' required onChange={(e) => { handleChange(e) }} />
         {/* password */}
-        <label htmlFor="password" className="text-xl after:content-['*'] after:ml-0.5 after:text-red-500">Password:</label>
-        <input className='border-2 h-10 rounded-3xl p-5 mb-5 focus:outline-none focus:border-blue-500' type="password" id='password' name='password' value={form.password} placeholder='Enter your password' minLength={5} maxLength={10} required onChange={(e) => { handleChange(e) }} />
+        <label htmlFor="password" className="text-lg after:content-['*'] after:ml-0.5 after:text-red-500">Password:</label>
+        <input className='border-2 h-10 rounded-3xl p-3 mb-3 focus:outline-none focus:border-blue-500' type="password" id='password' name='password' value={form.password} placeholder='Enter your password' minLength={5} maxLength={10} required onChange={(e) => { handleChange(e) }} />
         {/* signup button */}
         <button type="submit" className='bg-blue-500 text-white px-10 py-2 rounded-full hover:bg-blue-600 flex items-center justify-center'>
           {
