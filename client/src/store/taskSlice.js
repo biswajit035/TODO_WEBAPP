@@ -79,7 +79,7 @@ export const remove = createAsyncThunk('task/remove', async (id) => {
 })
 
 export const getTask = createAsyncThunk('task/getTask', async () => {
-    const result = await fetch(`http://localhost:8000/api/task/fetch`, {
+    const result = await fetch(`${process.env.REACT_APP_HOST}/api/task/fetch`, {
         method: "GET",
         headers: {
             'Content-Type': 'application/json',
